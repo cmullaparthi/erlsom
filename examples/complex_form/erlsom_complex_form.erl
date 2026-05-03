@@ -123,7 +123,7 @@ callback(Event, State) ->
         exit(Message)
     end
   catch
-    error:Reason -> throwError(error, {Reason,erlang:get_stacktrace()}, Event, State);
+    error:Reason:Stacktrace -> throwError(error, {Reason, Stacktrace}, Event, State);
     Class:Exception -> throwError(Class, Exception, Event, State)
   end.
 
